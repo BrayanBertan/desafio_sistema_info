@@ -11,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   splashScreenTempo() {
-    return Timer(Duration(seconds: 1), mudarTela);
+    return Timer(const Duration(seconds: 1), mudarTela);
   }
 
   mudarTela() async {

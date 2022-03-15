@@ -1,3 +1,5 @@
+import 'package:desafio_flutter/app/controller/usuario_controller.dart';
+import 'package:desafio_flutter/app/model/usuario_model.dart';
 import 'package:desafio_flutter/app/view/login/login_view.dart';
 import 'package:desafio_flutter/app/view/widgets/splashScreen_view.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +50,9 @@ class DesafioApp extends StatelessWidget {
           page: () => LoginPage(),
         ),
       ],
+      initialBinding: BindingsBuilder(() {
+        Get.lazyPut(() => UsuarioController(usuarioModel: UsuarioModel()));
+      }),
       home: SplashScreen(),
     );
   }

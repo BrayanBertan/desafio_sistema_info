@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:sqflite/sqflite.dart';
 
 class UsuarioModel {
-  final bancoService = Get.find<BancoService>();
+  final bancoService = Get.put(BancoService());
 
   Future<Usuario> SalvarUsuario(Usuario usuario) async {
     Database dbUsuario = await bancoService.db;
@@ -12,9 +12,10 @@ class UsuarioModel {
     return usuario;
   }
 
-  bool verificaLogin(String email, String senha) {
-    return (email.trim().toUpperCase() == 'SISTEMA' &&
-        senha.trim().toLowerCase() == 'canditado123');
+  bool verificaLogin(String usuario, String senha) {
+    print('usuario $usuario senha $senha');
+    return (usuario.trim().toUpperCase() == 'SISTEMA' &&
+        senha.trim().toUpperCase() == 'CANDIDATO123');
   }
 
   Future<int> deletarUsuario(int codigo) async {
