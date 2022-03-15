@@ -19,8 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   inicializaBanco() async {
-    final banco = Banco();
-    await banco.db;
+    await Get.putAsync(() => BancoService().db);
     splashScreenTempo();
   }
 

@@ -1,10 +1,11 @@
+import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class Banco {
-  static final Banco? _instance = Banco.internal();
-  factory Banco() => _instance!;
-  Banco.internal();
+class BancoService extends GetxService {
+  static final BancoService? _instance = BancoService.internal();
+  factory BancoService() => _instance!;
+  BancoService.internal();
   Database? _db;
 
   Future<Database> get db async {

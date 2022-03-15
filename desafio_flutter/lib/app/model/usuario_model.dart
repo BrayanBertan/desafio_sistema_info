@@ -1,0 +1,48 @@
+import 'package:desafio_flutter/app/banco/banco.dart';
+import 'package:desafio_flutter/app/classes/usuario.dart';
+import 'package:get/get.dart';
+import 'package:sqflite/sqflite.dart';
+
+class UsuarioModel {
+  final bancoService = Get.find<BancoService>();
+
+  Future<Usuario> SalvarUsuario(Usuario usuario) async {
+    Database dbUsuario = await bancoService.db;
+    usuario.codigo = await dbUsuario.insert("usuarios", usuario.toMap());
+    return usuario;
+  }
+
+  bool verificaLogin(String email, String senha) {
+    return (email.trim().toUpperCase() == 'SISTEMA' &&
+        senha.trim().toLowerCase() == 'canditado123');
+  }
+
+  Future<int> deletarUsuario(int codigo) async {
+    Database dbUsuario = await bancoService.db;
+
+    return await dbUsuario
+        .delete("usuarios", where: "$codigo = ?", whereArgs: [codigo]);
+  }
+
+  Future<int> atualizarUsuario(Usuario usuario) async {
+    Database dbUsuario = await bancoService.db;
+
+    return await dbUsuario.update("usuarios", usuario.toMap(),
+        where: "codigo = ?", whereArgs: [usuario.codigo]);
+  }
+
+  Future<List<Usuario>> getAllUsuario() async {
+    Database dbUsuario = await bancoService.db;
+    List<Map> maps = await dbUsuario.rawQuery("SELECT * FROM usuarios");
+    List<Usuario> listUsuario = [];
+    for (Map m in maps) {
+      listUsuario.add(Usuario.fromMap(m));
+    }
+    return listUsuario;
+  }
+
+  Future fechar() async {
+    Database dbUsuario = await bancoService.db;
+    dbUsuario.close();
+  }
+}
