@@ -1,5 +1,6 @@
 import 'package:desafio_flutter/app/controller/usuario_controller.dart';
 import 'package:desafio_flutter/app/model/usuario_model.dart';
+import 'package:desafio_flutter/app/view/home/home_view.dart';
 import 'package:desafio_flutter/app/view/login/login_view.dart';
 import 'package:desafio_flutter/app/view/widgets/splashScreen_view.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,10 @@ class DesafioApp extends StatelessWidget {
         GetPage(
           name: '/login',
           page: () => LoginPage(),
+        ),
+        GetPage(
+          name: '/home',
+          page: () => HomePage(),
         ),
       ],
       initialBinding: BindingsBuilder(() {

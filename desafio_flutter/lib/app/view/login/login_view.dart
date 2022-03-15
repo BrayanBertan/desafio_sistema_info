@@ -50,7 +50,6 @@ class LoginPage extends GetView<UsuarioController> {
                             labelText: 'Senha',
                             border: const OutlineInputBorder(),
                             prefixIcon: const Icon(Icons.lock),
-                            suffixIcon: const Icon(Icons.remove_red_eye),
                             errorText: controller.erroLogin.value),
                       );
                     }),
@@ -65,7 +64,9 @@ class LoginPage extends GetView<UsuarioController> {
                         borderRadius: BorderRadius.circular(0),
                       ),
                       child: ElevatedButton(
-                        onPressed: controller.verificaLogin,
+                        onPressed: () {
+                          if (controller.verificaLogin()) Get.toNamed('/home');
+                        },
                         child: const Text(
                           'Entrar',
                           style: TextStyle(
