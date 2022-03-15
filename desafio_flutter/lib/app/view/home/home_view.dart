@@ -113,20 +113,47 @@ class HomePage extends StatelessWidget {
               height: 20.0,
             ),
             ExpansionTile(
-              title: Text(
+              title: const Text(
                 'Usuários',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),
               children: [
-                ListView(
-                  shrinkWrap: true,
-                  children: [
-                    Text('aaaaaaaaaaaa'),
-                    Text('aaaaaaaaaaaa'),
-                    Text('aaaaaaaaaaaa'),
-                  ],
-                )
+                Obx(() {
+                  return Container(
+                    height: 200,
+                    child: ListView(
+                      physics: const ClampingScrollPhysics(),
+                      children: homeController.usuarios.value
+                          .map((usuario) => ListTile(
+                                leading: Text('${usuario.codigo}'),
+                                title: Text(usuario.nome ?? ''),
+                                trailing: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.edit,
+                                            color: Colors.yellow,
+                                          )),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.delete_forever,
+                                            color: Colors.redAccent,
+                                          ))
+                                    ],
+                                  ),
+                                ),
+                              ))
+                          .toList(),
+                    ),
+                  );
+                })
               ],
             )
           ],

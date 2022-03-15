@@ -30,6 +30,7 @@ class LoginPage extends GetView<UsuarioController> {
                             ExactAssetImage('assets/imagens/usuario.png'),
                         minRadius: 75,
                         maxRadius: 100),
+                    SizedBox(height: 10.0,),
                     TextField(
                       onChanged: controller.setUsuarioLogin,
                       decoration: const InputDecoration(

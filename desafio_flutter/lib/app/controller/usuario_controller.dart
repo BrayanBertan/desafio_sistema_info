@@ -1,9 +1,16 @@
+import 'package:desafio_flutter/app/classes/usuario.dart';
 import 'package:desafio_flutter/app/model/usuario_model.dart';
 import 'package:get/get.dart';
 
 class UsuarioController extends GetxController {
   UsuarioModel usuarioModel;
   UsuarioController({required this.usuarioModel});
+
+  @override
+  void onInit() {
+    super.onInit();
+    getAllUsuarios();
+  }
 
   final usuarioLogin = ''.obs;
   final senhaLogin = ''.obs;
@@ -14,12 +21,12 @@ class UsuarioController extends GetxController {
   final cpf = Rxn<String?>();
   final endereco = ''.obs;
   final telefone = ''.obs;
+  final usuarios = <Usuario>[].obs;
 
   bool verificaLogin() {
     var retorno =
         usuarioModel.verificaLogin(usuarioLogin.value, senhaLogin.value);
     erroLogin.value = null;
-    print('retorno $retorno');
     if (!retorno) erroLogin.value = 'Dados incorretos!';
     return retorno;
   }
@@ -55,6 +62,15 @@ class UsuarioController extends GetxController {
   bool formularioValido() => nomeValido() && cpfValido();
 
   Future<void> cadastrar() async {
-    print(telefone);
+    usuarioModel.SalvarUsuario(Usuario(
+        nome: nome.value,
+        cpf: cpf.value,
+        endereco: endereco.value,
+        telefone: telefone.value));
+    getAllUsuarios();
+  }
+
+  Future<void> getAllUsuarios() async {
+    usuarioModel.getAllUsuario().then((value) => usuarios.assignAll(value));
   }
 }

@@ -35,6 +35,7 @@ class UsuarioModel {
   Future<List<Usuario>> getAllUsuario() async {
     Database dbUsuario = await bancoService.db;
     List<Map> maps = await dbUsuario.rawQuery("SELECT * FROM usuarios");
+    print(maps);
     List<Usuario> listUsuario = [];
     for (Map m in maps) {
       listUsuario.add(Usuario.fromMap(m));
