@@ -1,3 +1,5 @@
+import 'package:desafio_flutter/app/view/login/login_view.dart';
+import 'package:desafio_flutter/app/view/widgets/splashScreen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -40,17 +42,13 @@ class DesafioApp extends StatelessWidget {
             const ResponsiveBreakpoint.autoScale(700, name: TABLET),
             const ResponsiveBreakpoint.resize(800, name: DESKTOP),
           ]),
-      home: Scaffold(
-        appBar: AppBar(),
-        body: Container(
-          child: Column(
-            children: [
-              Text('Teste'),
-              ElevatedButton(onPressed: () {}, child: Text('Teste'))
-            ],
-          ),
+      getPages: [
+        GetPage(
+          name: '/login',
+          page: () => LoginPage(),
         ),
-      ),
+      ],
+      home: SplashScreen(),
     );
   }
 }
