@@ -1,5 +1,6 @@
 import 'package:desafio_flutter/app/classes/usuario.dart';
 import 'package:desafio_flutter/app/model/usuario_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class UsuarioController extends GetxController {
@@ -9,6 +10,7 @@ class UsuarioController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    setControllers();
     getAllUsuarios();
   }
 
@@ -22,6 +24,13 @@ class UsuarioController extends GetxController {
   final endereco = ''.obs;
   final telefone = ''.obs;
   final usuarios = <Usuario>[].obs;
+
+  final nomeController = TextEditingController();
+  final cpfController = TextEditingController();
+  final enderecoController = TextEditingController();
+  final telefoneController = TextEditingController();
+
+  final mensagemRetornoCadastro = ''.obs;
 
   bool verificaLogin() {
     var retorno =
@@ -41,7 +50,7 @@ class UsuarioController extends GetxController {
 
   setCpf(String val) => cpf.value = val;
 
-  setEndereco(String val) => endereco.value = val;
+  setendereco(String val) => endereco.value = val;
 
   setTelefone(String val) => telefone.value = val;
 
@@ -62,15 +71,67 @@ class UsuarioController extends GetxController {
   bool formularioValido() => nomeValido() && cpfValido();
 
   Future<void> cadastrar() async {
-    usuarioModel.SalvarUsuario(Usuario(
+    var retorno;
+    final usuario = Usuario(
         nome: nome.value,
         cpf: cpf.value,
         endereco: endereco.value,
-        telefone: telefone.value));
-    getAllUsuarios();
+        telefone: telefone.value);
+
+    if (codigo.value == null)
+      retorno = await usuarioModel.salvarUsuario(usuario);
+    else {
+      usuario.codigo = codigo.value;
+      retorno = await usuarioModel.atualizarUsuario(usuario);
+    }
+
+    mensagemRetornoCadastro.value = retorno['mensagem'];
+    if (retorno['status']) {
+      limparFormulario();
+      getAllUsuarios();
+    }
+    ;
+    Future.delayed(const Duration(seconds: 5))
+        .then((value) => mensagemRetornoCadastro.value = '');
   }
 
   Future<void> getAllUsuarios() async {
     usuarioModel.getAllUsuario().then((value) => usuarios.assignAll(value));
+  }
+
+  Future<void> deletarUsuario(int id) async {
+    await usuarioModel.deletarUsuario(id);
+    getAllUsuarios();
+  }
+
+  void limparFormulario() {
+    codigo.value = null;
+    nome.value = null;
+    cpf.value = null;
+    endereco.value = '';
+    telefone.value = '';
+
+    setControllers();
+  }
+
+  void setControllers() {
+    nomeController.text = '';
+    cpfController.text = '';
+    enderecoController.text = '';
+    telefoneController.text = '';
+  }
+
+  void setEditar(Usuario usuario) {
+    print('editar ${usuario}');
+    codigo.value = usuario.codigo;
+    nome.value = usuario.nome;
+    cpf.value = usuario.cpf;
+    endereco.value = usuario.endereco!;
+    telefone.value = usuario.telefone!;
+
+    nomeController.text = usuario.nome!;
+    cpfController.text = usuario.cpf!;
+    enderecoController.text = usuario.endereco!;
+    telefoneController.text = usuario.telefone!;
   }
 }

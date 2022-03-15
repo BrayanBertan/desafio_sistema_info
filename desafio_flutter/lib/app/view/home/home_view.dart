@@ -15,12 +15,12 @@ class HomePage extends StatelessWidget {
         title: const Text('Desafio'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               'Cadastro',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 35),
@@ -28,86 +28,97 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 30.0,
             ),
-            Obx(() {
-              return TextFormField(
-                onChanged: homeController.setNome,
-                initialValue: homeController.nome.value,
-                decoration: InputDecoration(
-                    labelText: 'Nome',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.person),
-                    errorText: homeController.nomeErroMensagem()),
-              );
-            }),
+            TextFormField(
+              onChanged: homeController.setNome,
+              controller: homeController.nomeController,
+              decoration: InputDecoration(
+                  labelText: 'Nome',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.person),
+                  errorText: homeController.nomeErroMensagem()),
+            ),
             const SizedBox(
               height: 10.0,
             ),
-            Obx(() {
-              return TextFormField(
-                onChanged: homeController.setCpf,
-                initialValue: homeController.cpf.value,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                  CpfInputFormatter(),
-                ],
-                decoration: InputDecoration(
-                  labelText: 'CPF',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.document_scanner),
-                  errorText: homeController.cpfErroMensagem(),
-                ),
-              );
-            }),
+            TextFormField(
+              onChanged: homeController.setCpf,
+              controller: homeController.cpfController,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                CpfInputFormatter(),
+              ],
+              decoration: InputDecoration(
+                labelText: 'CPF',
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.document_scanner),
+                errorText: homeController.cpfErroMensagem(),
+              ),
+            ),
             const SizedBox(
               height: 10.0,
             ),
-            Obx(() {
-              return TextFormField(
-                initialValue: homeController.endereco.value,
-                onChanged: homeController.setEndereco,
-                decoration: const InputDecoration(
-                  labelText: 'Endereço',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.add_location),
-                ),
-              );
-            }),
+            TextFormField(
+              controller: homeController.enderecoController,
+              onChanged: homeController.setendereco,
+              maxLines: 5,
+              decoration: const InputDecoration(
+                labelText: 'Endereço',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.add_location),
+              ),
+            ),
             const SizedBox(
               height: 10.0,
             ),
-            Obx(() {
-              return TextFormField(
-                initialValue: homeController.telefone.value,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                  TelefoneInputFormatter(),
-                ],
-                onChanged: homeController.setTelefone,
-                decoration: const InputDecoration(
-                  labelText: 'Telefone',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.phone),
-                ),
-              );
-            }),
+            TextFormField(
+              controller: homeController.telefoneController,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                TelefoneInputFormatter(),
+              ],
+              onChanged: homeController.setTelefone,
+              decoration: const InputDecoration(
+                labelText: 'Telefone',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.phone),
+              ),
+            ),
             const SizedBox(
               height: 15.0,
             ),
             Obx(() {
-              return ElevatedButton(
-                onPressed: homeController.formularioValido()
-                    ? () async {
-                        homeController.cadastrar().then((value) {});
-                      }
-                    : null,
-                child: const Text(
-                  'Salvar',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: homeController.formularioValido()
+                        ? () async {
+                            homeController.cadastrar().then((value) {});
+                          }
+                        : null,
+                    child: const Text(
+                      'Salvar',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ),
+                  ElevatedButton(
+                    onPressed: () => homeController.limparFormulario(),
+                    child: const Text(
+                      'Cancelar',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ],
               );
+            }),
+            Obx(() {
+              return Text(homeController.mensagemRetornoCadastro.value);
             }),
             const SizedBox(
               height: 20.0,
@@ -135,13 +146,18 @@ class HomePage extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            homeController.setEditar(usuario);
+                                          },
                                           icon: const Icon(
                                             Icons.edit,
                                             color: Colors.yellow,
                                           )),
                                       IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            homeController.deletarUsuario(
+                                                usuario.codigo!);
+                                          },
                                           icon: const Icon(
                                             Icons.delete_forever,
                                             color: Colors.redAccent,
