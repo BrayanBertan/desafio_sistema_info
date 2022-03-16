@@ -15,13 +15,19 @@ namespace desafio_sistema.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Titulo"] = "Desafio Sistema Info";
+            ViewData["Footer"] = "Brayan Bertan - Desafio Sistema Info";
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Home()
         {
+            ViewData["Titulo"] = "Desafio Sistema Info";
+            ViewData["Footer"] = "Brayan Bertan - Desafio Sistema Info";
             return View();
         }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
