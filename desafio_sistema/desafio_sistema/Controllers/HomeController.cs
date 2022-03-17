@@ -51,7 +51,7 @@ namespace desafio_sistema.Controllers
             {
                 content.Codigo = _usuarios.Count + 1;
                 _usuarios.Add(content);
-                return Ok("Pessoa cadastrada com sucesso" + content.Cpf.Substring(0,4));
+                return Ok("Pessoa cadastrada com sucesso, código " + content.Cpf.Replace(".", "").Substring(0, 4));
             }
             catch(Exception e)
             {

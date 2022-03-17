@@ -1,6 +1,5 @@
 ﻿"use strict";
-
-var app = angular.module("Homeapp", []);
+var app = angular.module("Homeapp", ['ui.mask']);
 
 app.controller("AngularController", function ($scope, $http, $window) {
     

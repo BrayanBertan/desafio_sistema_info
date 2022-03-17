@@ -6,6 +6,7 @@
 @section scripts{
 
     <script src="~/js/angular.min.js"></script>
+    <script type="text/javascript" src="~/js/mask.min.js"></script>
     <script src="~/AngularController/HomeAngularJS.js"></script>
 
 }
@@ -18,14 +19,14 @@
             <form name="formCadastro" id="formCadastro" novalidate>
                 <div class="form-group">
                    <label for="nome" class="col-form-label" ng-class="{'col-form-label  text-danger': formCadastro.nome.$touched && formCadastro.nome.$error.required,'col-form-label  text-success': !formCadastro.nome.$error.required}">*Nome</label>
-                   <input type="text"  class="form-control" ng-class="{'form-control':formCadastro.nome.$untouched,'form-control is-invalid': formCadastro.nome.$touched && formCadastro.nome.$error.required,'form-control is-valid': !formCadastro.nome.$error.required}" id="nome"  name="nome" placeholder="nome"  ng-model="nome" ng-required="true">
+                   <input  placeholder="Nome"   class="form-control" ng-class="{'form-control':formCadastro.nome.$untouched,'form-control is-invalid': formCadastro.nome.$touched && formCadastro.nome.$error.required,'form-control is-valid': !formCadastro.nome.$error.required}" id="nome"  name="nome"   ng-model="nome" ng-required="true">
                    <small ng-show="formCadastro.nome.$touched && formCadastro.nome.$error.required" class="text-danger">
                            Nome é obrigatorio.
                    </small>
                 </div>
                 <div class="form-group">
-                    <label for="cpf" class="col-form-label" ng-class="{'col-form-label  text-danger': formCadastro.cpf.$touched && formCadastro.cpf.$error.required,'col-form-label  text-success': !formCadastro.cpf.$error.required}">*Cpf</label>
-                    <input type="text"  class="form-control" ng-class="{'form-control':formCadastro.cpf.$untouched,'form-control is-invalid': formCadastro.cpf.$touched && formCadastro.cpf.$error.required,'form-control is-valid': !formCadastro.cpf.$error.required}" id="cpf"  name="cpf" placeholder="cpf"  ng-model="cpf" ng-required="true">
+                    <label  for="cpf" class="col-form-label" ng-class="{'col-form-label  text-danger': formCadastro.cpf.$touched && formCadastro.cpf.$error.required,'col-form-label  text-success': !formCadastro.cpf.$error.required}">*Cpf</label>
+                    <input ui-mask="999.999.99-99" model-view-value="true"  type="text"  class="form-control" ng-class="{'form-control':formCadastro.cpf.$untouched,'form-control is-invalid': formCadastro.cpf.$touched && formCadastro.cpf.$error.required,'form-control is-valid': !formCadastro.cpf.$error.required}" id="cpf"  name="cpf"  ng-model="cpf" ng-required="true">
                     <small ng-show="formCadastro.cpf.$touched && formCadastro.cpf.$error.required" class="text-danger">
                             CPF é obrigatorio.
                     </small>
@@ -36,7 +37,7 @@
                 </div>
                  <div class="form-group">
                      <label for="telefone">Telefone</label>
-                    <input type="text" class="form-control" id="telefone"  placeholder="Telefone"  ng-model="telefone">
+                    <input ui-mask="(99)99999-9999" model-view-value="true" type="text" class="form-control" name="telefone" id="telefone"  ng-model="telefone">
                 </div>
                 <button  class="btn btn-primary btnLogin btn-lg float-end"  ng-click="cadastrarUsuario()" ng-disabled="formCadastro.$invalid" ng-class="{'btn btn-primary btnLogin btn-lg float-end':formCadastro.$valid,'btn btn-primary btnLogin btnCadastroDesabilitado btn-lg float-end':formCadastro.$invalid}">Cadastrar</button>
             </form>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ge5i9vu+ojMEa1Z4R+YGJe8yVNTQ+SYDeBJ9xJIem0Y=",
+  "Hash": "co5X6fDsWG+HAO1GCyj06WJ1BIWKHCVPtEv2Fj6EYJI=",
   "Source": "desafio_sistema",
   "BasePath": "_content/desafio_sistema",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\angular.min.js.map"
+    },
+    {
+      "Identity": "C:\\Users\\brayanbertan\\Documents\\desafio_sistema_info\\desafio_sistema\\desafio_sistema\\wwwroot\\js\\mask.min.js",
+      "SourceId": "desafio_sistema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\brayanbertan\\Documents\\desafio_sistema_info\\desafio_sistema\\desafio_sistema\\wwwroot\\",
+      "BasePath": "_content/desafio_sistema",
+      "RelativePath": "js/mask.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\mask.min.js"
     },
     {
       "Identity": "C:\\Users\\brayanbertan\\Documents\\desafio_sistema_info\\desafio_sistema\\desafio_sistema\\wwwroot\\js\\site.js",
