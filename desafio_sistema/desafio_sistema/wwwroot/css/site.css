@@ -42,7 +42,16 @@ body {
     border-color: rgb(229,9,21);
 }
 
-    .btnLogin:hover{
-        margin-top: 10px;
-        background-color: rgb(229,9,21);
-    }
+.btnLogin:hover{ 
+    margin-top: 10px;
+    background-color: rgb(229,9,21);
+}
+
+.btnCadastroDesabilitado {
+    border-color: grey !important;
+    background-color: grey !important;
+}
+
+.table-striped > thead {
+    background-color: rgb(160, 24, 28);
+}

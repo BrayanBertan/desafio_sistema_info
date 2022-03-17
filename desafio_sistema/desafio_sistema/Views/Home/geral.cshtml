@@ -14,29 +14,36 @@
   <div class="row">
     <div class="col-sm-6">
         <div class="row-sm-4">
-           <img src="~/imagens/usuario.png" class="mx-auto d-block imagemLogin" asp-append-version="true" />  
-            <form>
+           <img src="~/imagens/usuario.png" class="mx-auto d-block imagemLogin" asp-append-version="true" /></br>
+            <form name="formCadastro" id="formCadastro" novalidate>
                 <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome"  placeholder="nome"  ng-model="nome">
+                   <label for="nome" class="col-form-label" ng-class="{'col-form-label  text-danger': formCadastro.nome.$touched && formCadastro.nome.$error.required,'col-form-label  text-success': !formCadastro.nome.$error.required}">*Nome</label>
+                   <input type="text"  class="form-control" ng-class="{'form-control':formCadastro.nome.$untouched,'form-control is-invalid': formCadastro.nome.$touched && formCadastro.nome.$error.required,'form-control is-valid': !formCadastro.nome.$error.required}" id="nome"  name="nome" placeholder="nome"  ng-model="nome" ng-required="true">
+                   <small ng-show="formCadastro.nome.$touched && formCadastro.nome.$error.required" class="text-danger">
+                           Nome é obrigatorio.
+                   </small>
                 </div>
                 <div class="form-group">
-                    <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" id="cpf"  placeholder="CPF"  ng-model="cpf">
+                    <label for="cpf" class="col-form-label" ng-class="{'col-form-label  text-danger': formCadastro.cpf.$touched && formCadastro.cpf.$error.required,'col-form-label  text-success': !formCadastro.cpf.$error.required}">*Cpf</label>
+                    <input type="text"  class="form-control" ng-class="{'form-control':formCadastro.cpf.$untouched,'form-control is-invalid': formCadastro.cpf.$touched && formCadastro.cpf.$error.required,'form-control is-valid': !formCadastro.cpf.$error.required}" id="cpf"  name="cpf" placeholder="cpf"  ng-model="cpf" ng-required="true">
+                    <small ng-show="formCadastro.cpf.$touched && formCadastro.cpf.$error.required" class="text-danger">
+                            CPF é obrigatorio.
+                    </small>
+                </div>
+                <div class="form-group">
+                   <label for="endereco">Endereço</label>
+                   <input type="text" class="form-control" id="endereco"  placeholder="Endereço"  ng-model="endereco">
                 </div>
                  <div class="form-group">
-                    <label for="endereco">Endereço</label>
-                    <input type="text" class="form-control" id="endereco"  placeholder="Endereço"  ng-model="endereco">
-                </div>
-                 <div class="form-group">
-                    <label for="telefone">Telefone</label>
+                     <label for="telefone">Telefone</label>
                     <input type="text" class="form-control" id="telefone"  placeholder="Telefone"  ng-model="telefone">
                 </div>
-                <button  class="btn btn-primary btnLogin btn-lg float-end"  ng-click="cadastrarUsuario()">Cadastrar</button>
+                <button  class="btn btn-primary btnLogin btn-lg float-end"  ng-click="cadastrarUsuario()" ng-disabled="formCadastro.$invalid" ng-class="{'btn btn-primary btnLogin btn-lg float-end':formCadastro.$valid,'btn btn-primary btnLogin btnCadastroDesabilitado btn-lg float-end':formCadastro.$invalid}">Cadastrar</button>
             </form>
         </div>
     </div>
     <div class="col-sm-6" ng-init="getUsuarios()">
+        <img src="~/imagens/usuarios.png" class="mx-auto d-block imagemLogin" asp-append-version="true" /></br>
         <h2>Usuarios</h2>
         <p ng-if="usuarios.length == 0">Nenhum usuario cadastrado</p>
         <table class="table table-striped"  ng-if="usuarios.length > 0">

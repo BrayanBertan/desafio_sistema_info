@@ -50,5 +50,7 @@ app.controller("AngularController", function ($scope, $http, $window) {
         $scope.cpf = '';
         $scope.endereco = '';
         $scope.telefone = '';
+        $scope.formCadastro.$setPristine();
+        $scope.formCadastro.$setUntouched();
     }
 });
