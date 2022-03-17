@@ -27,6 +27,21 @@ namespace desafio_sistema.Controllers
             return View();
         }
 
+        public IActionResult verificaLogin(String usuario, String senha)
+        {
+            if (usuario == "SISTEMA" && senha == "candidato123")
+                return Ok(usuario);
+            return BadRequest();
+        
+        }
+
+        public int cadastrarUsuario()
+        {
+            return 200;
+        }
+
+    
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
