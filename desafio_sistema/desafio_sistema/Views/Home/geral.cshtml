@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section scripts{
+
+    <script src="~/js/angular.min.js"></script>
+    <script src="~/AngularController/HomeAngularJS.js"></script>
+
+}
+
+<div class="container container-login"  ng-app="Homeapp" ng-controller="AngularController">
+  <div class="row">
+    <div class="col-sm-6">
+        <div class="row-sm-4">
+           <img src="~/imagens/usuario.png" class="mx-auto d-block imagemLogin" asp-append-version="true" />  
+            <form>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome"  placeholder="nome"  ng-model="nome">
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf"  placeholder="CPF"  ng-model="cpf">
+                </div>
+                 <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco"  placeholder="Endereço"  ng-model="endereco">
+                </div>
+                 <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" class="form-control" id="telefone"  placeholder="Telefone"  ng-model="telefone">
+                </div>
+                <button  class="btn btn-primary btnLogin btn-lg float-end"  ng-click="cadastrarUsuario()">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-6" ng-init="getUsuarios()">
+        <h2>Usuarios</h2>
+        <p ng-if="usuarios.length == 0">Nenhum usuario cadastrado</p>
+        <table class="table table-striped"  ng-if="usuarios.length > 0">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="usuario in usuarios">
+                    <td>{{usuario.codigo}}</td>
+                    <td>{{usuario.nome}}</td>
+                    <td>{{usuario.cpf}}</td>
+                    <td>{{usuario.endereco}}</td>
+                    <td>{{usuario.telefone}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>

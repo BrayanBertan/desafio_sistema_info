@@ -15,8 +15,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/brayanbertan/Documents/desafio_sistema_info/desafio_sistema/desafio_sistema/Views/Home/home.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxob21lLmNzaHRtbA==
+[C:/Users/brayanbertan/Documents/desafio_sistema_info/desafio_sistema/desafio_sistema/Views/Home/geral.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxnZXJhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/brayanbertan/Documents/desafio_sistema_info/desafio_sistema/desafio_sistema/Views/Home/Index.cshtml]

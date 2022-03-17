@@ -4,9 +4,11 @@ using System.Diagnostics;
 
 namespace desafio_sistema.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        static List<Usuario> _usuarios = new List<Usuario>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -15,32 +17,55 @@ namespace desafio_sistema.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Titulo"] = "Desafio Sistema Info";
+            ViewData["Titulo"] = "Desafio Sistema Info - LOGIN";
             ViewData["Footer"] = "Brayan Bertan - Desafio Sistema Info";
             return View();
         }
 
-        public IActionResult Home()
+        public IActionResult Geral()
         {
-            ViewData["Titulo"] = "Desafio Sistema Info";
+            ViewData["Titulo"] = "Desafio Sistema Info - GERAL";
             ViewData["Footer"] = "Brayan Bertan - Desafio Sistema Info";
             return View();
         }
 
         public IActionResult verificaLogin(String usuario, String senha)
         {
-            if (usuario == "SISTEMA" && senha == "candidato123")
-                return Ok(usuario);
-            return BadRequest();
+            try
+            {
+                if (usuario == "SISTEMA" && senha == "candidato123")
+                    return Ok(usuario);
+                return BadRequest();
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         
         }
-
-        public int cadastrarUsuario()
+        [HttpPost]
+        public  IActionResult cadastrarUsuario([FromBody] Usuario content)
         {
-            return 200;
+            try
+            {
+                content.Codigo = _usuarios.Count + 1;
+                _usuarios.Add(content);
+                return Ok("Pessoa cadastrada com sucesso" + content.Cpf.Substring(0,4));
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
-    
+        public IActionResult getUsuarios()
+        {
+            return Ok(_usuarios);
+        }
+
+
 
 
 
