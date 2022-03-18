@@ -30,3 +30,8 @@ C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sis
 C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema\bin\Debug\net6.0\WebGrease.dll
 C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema\obj\Debug\net6.0\desafio_sistema.csproj.CopyComplete
+C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema\bin\Debug\net6.0\Npgsql.dll
+C:\Users\brayanbertan\Documents\desafio_sistema_info\desafio_sistema\desafio_sistema\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

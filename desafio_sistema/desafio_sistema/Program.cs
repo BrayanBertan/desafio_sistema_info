@@ -1,9 +1,22 @@
+using desafio_sistema.DataAccess;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<PostgreSqlContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("postgreSqlContext")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

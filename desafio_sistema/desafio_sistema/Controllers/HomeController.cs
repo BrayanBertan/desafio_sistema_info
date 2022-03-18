@@ -1,5 +1,6 @@
-﻿using desafio_sistema.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using desafio_sistema.DataAccess;
+using desafio_sistema.Models;
 using System.Diagnostics;
 
 namespace desafio_sistema.Controllers
@@ -7,12 +8,13 @@ namespace desafio_sistema.Controllers
     
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        static List<Usuario> _usuarios = new List<Usuario>();
-
-        public HomeController(ILogger<HomeController> logger)
+        //private readonly ILogger<HomeController> _logger;
+         List<Usuario> _usuarios = new List<Usuario>();
+        //private readonly IDataAccessProvider _dataAccessProvider;
+        private readonly PostgreSqlContext _context;
+        public HomeController(PostgreSqlContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -45,24 +47,23 @@ namespace desafio_sistema.Controllers
         
         }
         [HttpPost]
-        public  IActionResult cadastrarUsuario([FromBody] Usuario content)
+        public async Task<IActionResult> cadastrarUsuario([FromBody] Usuario content)
         {
-            try
+            if (ModelState.IsValid)
             {
-                content.Codigo = _usuarios.Count + 1;
-                _usuarios.Add(content);
+                _context.Add(content);
+                await _context.SaveChangesAsync();
                 return Ok("Pessoa cadastrada com sucesso, código " + content.Cpf.Replace(".", "").Substring(0, 4));
             }
-            catch(Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            return BadRequest();
+
+          
             
         }
 
         public IActionResult getUsuarios()
         {
-            return Ok(_usuarios);
+            return Ok( _context.usuarios.ToList());
         }
 
 
