@@ -4,7 +4,8 @@ Olá, como eu não tinha conhecimento em C# eu resolvi fazer dois projetos um co
 Versão em C# com AngularJS:https://github.com/BrayanBertan/desafio_sistema_info/tree/main/desafio_sistema
 
 ![image](https://user-images.githubusercontent.com/25934199/158878955-cbd6c8a9-e2e7-45b5-8c33-0573386bdf67.png)
-![image](https://user-images.githubusercontent.com/25934199/158878878-9ba32dd5-48e1-4191-a7de-2240fcfae7b0.png)
+![image](https://user-images.githubusercontent.com/25934199/159011157-b00435b3-3f07-414e-966b-57bf5a435c49.png)
+
 
 Usei o Postgres para o banco de dados.
 
