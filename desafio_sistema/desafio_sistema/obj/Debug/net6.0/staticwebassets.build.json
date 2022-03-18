@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "co5X6fDsWG+HAO1GCyj06WJ1BIWKHCVPtEv2Fj6EYJI=",
+  "Hash": "wdlvruhMbkaPdowZMsR86XHa1vSka3lsMxuA9n+/iFY=",
   "Source": "desafio_sistema",
   "BasePath": "_content/desafio_sistema",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\brayanbertan\\Documents\\desafio_sistema_info\\desafio_sistema\\desafio_sistema\\wwwroot\\imagens\\pesquisar.png",
+      "SourceId": "desafio_sistema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\brayanbertan\\Documents\\desafio_sistema_info\\desafio_sistema\\desafio_sistema\\wwwroot\\",
+      "BasePath": "_content/desafio_sistema",
+      "RelativePath": "imagens/pesquisar.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagens\\pesquisar.png"
     },
     {
       "Identity": "C:\\Users\\brayanbertan\\Documents\\desafio_sistema_info\\desafio_sistema\\desafio_sistema\\wwwroot\\imagens\\usuario.png",

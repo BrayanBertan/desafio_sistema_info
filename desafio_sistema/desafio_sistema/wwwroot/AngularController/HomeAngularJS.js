@@ -11,13 +11,14 @@ app.controller("AngularController", function ($scope, $http, $window) {
     $scope.usuario = '';
     $scope.senha = '';
     $scope.mensagemRetornoCadastro = '';
+    $scope.pesquisa = '';
 
     $scope.verificaLogin = function () {
         $http.get('home/verificaLogin?usuario=' + $scope.usuario + '&senha=' + $scope.senha).then(function (response) {
         }).then(function successCallback(response) {
             $window.location.href = "home/geral";
         }, function errorCallback(response) {
-            alert('Dados incorretos!');
+            alert(response.data);
         });
     }
 

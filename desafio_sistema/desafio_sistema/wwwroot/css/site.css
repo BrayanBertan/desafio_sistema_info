@@ -32,6 +32,7 @@ body {
     height: 300px;
     align-content:center;
 }
+
 .form-group{
     margin-bottom:5px;
 }
@@ -54,4 +55,9 @@ body {
 
 .table-striped > thead {
     background-color: rgb(160, 24, 28);
+}
+
+.imagemInputPesquisa {
+    width: 30px;
+    height: 30px;
 }

@@ -8,10 +8,10 @@ namespace desafio_sistema.Controllers
     
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
-         List<Usuario> _usuarios = new List<Usuario>();
-        //private readonly IDataAccessProvider _dataAccessProvider;
+        List<Usuario> _usuarios = new List<Usuario>();
         private readonly PostgreSqlContext _context;
+        String tituloMensagem = "Desafio Sistema Info - ";
+        String footerMensagem = "Brayan Bertan - Desafio Sistema Info";
         public HomeController(PostgreSqlContext context)
         {
             _context = context;
@@ -19,15 +19,15 @@ namespace desafio_sistema.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Titulo"] = "Desafio Sistema Info - LOGIN";
-            ViewData["Footer"] = "Brayan Bertan - Desafio Sistema Info";
+            ViewData["Titulo"] = tituloMensagem + "LOGIN";
+            ViewData["Footer"] = footerMensagem;
             return View();
         }
 
         public IActionResult Geral()
         {
-            ViewData["Titulo"] = "Desafio Sistema Info - GERAL";
-            ViewData["Footer"] = "Brayan Bertan - Desafio Sistema Info";
+            ViewData["Titulo"] = tituloMensagem + "GERAL";
+            ViewData["Footer"] = footerMensagem;
             return View();
         }
 
@@ -37,7 +37,7 @@ namespace desafio_sistema.Controllers
             {
                 if (usuario == "SISTEMA" && senha == "candidato123")
                     return Ok(usuario);
-                return BadRequest();
+                return BadRequest("Dados incorretos!");
 
             }
             catch (Exception e)
@@ -55,7 +55,7 @@ namespace desafio_sistema.Controllers
                 await _context.SaveChangesAsync();
                 return Ok("Pessoa cadastrada com sucesso, código " + content.Cpf.Replace(".", "").Substring(0, 4));
             }
-            return BadRequest();
+            return BadRequest("Erro ao cadastrar usuario");
 
           
             
@@ -63,7 +63,7 @@ namespace desafio_sistema.Controllers
 
         public IActionResult getUsuarios()
         {
-            return Ok( _context.usuarios.ToList());
+            return Ok(_context.usuarios.ToList());
         }
 
 
